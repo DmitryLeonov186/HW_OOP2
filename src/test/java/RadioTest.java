@@ -2,6 +2,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+
+
     @Test
     public void switchToTheDesiredChannel1() {
         Radio radio = new Radio();
@@ -253,6 +255,40 @@ public class RadioTest {
         radio.setCurrentVolume(243);
         int expected = 0;
         int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void ConstructorTestPrevious() {
+        Radio radio = new Radio(60);
+        radio.setCurrentStation(0);
+        radio.prev();
+        int expected = 59;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+
+
+    }
+
+    @Test
+    public void ConstructorTestNext() {
+        Radio radio = new Radio(60);
+        radio.setCurrentStation(59);
+        radio.next();
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+
+
+    }
+
+    @Test
+    public void ConstructorTestDesiredStation() {
+        Radio radio = new Radio(60);
+        radio.setCurrentStation(32);
+        int expected = 32;
+        int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
 
     }
